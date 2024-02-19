@@ -1,5 +1,5 @@
 const swaggerJSDoc = require('swagger-jsdoc')
-const swaggerUi = require('swagger-ui-express')
+// const swaggerUi = require('swagger-ui-express')
 const path = require('path')
 
 const opciones = {
@@ -10,17 +10,17 @@ const opciones = {
       version: '1.0.0',
     },
   },
-  apis: ['./src/rutas/rutas.js'],
+  apis: ['./src/rutas/rutas*.js'],
 }
 
 const swaggerSpec = swaggerJSDoc(opciones)
 
-const swaggerDocs = (app, PORT) => {
-  app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
-  app.use('/api/docs.json', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
-    res.send(swaggerSpec)
-  })
-}
+// const swaggerDocs = (app, port) => {
+//   app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+//   app.use('/api/docs.json', (req, res) => {
+//     res.setHeader('Content-Type', 'application/json')
+//     res.send(swaggerSpec)
+//   })
+// }
 
-module.exports = { swaggerDocs }
+module.exports = { swaggerSpec }
