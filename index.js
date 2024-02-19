@@ -10,7 +10,7 @@ const router = require('./src/rutas/rutas.js')
 // const { swaggerSpec } = require('./src/rutas/swagger')
 
 const app = express()
-const PORT = process.env.PORT || 4321
+const PORT = process.env.PORT || 3000
 
 app.disable('x-powered-by')
 app.use(express.json())
@@ -31,7 +31,7 @@ const opciones = {
   apis: ['./src/rutas/rutas*.js'],
 }
 const swaggerSpec = swaggerJSDoc(opciones)
-
+console.log(swaggerSpec);
 
 
 app.get('/', (req, res) => {
@@ -48,7 +48,8 @@ app.get('/', (req, res) => {
   res.send(htmlResponse)
 })
 
-app.get('api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 app.get('/api-docs.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
