@@ -2,7 +2,6 @@ const express = require('express')
 const cors = require('cors')
 const dotenv = require('dotenv').config()
 const { createClient } = require("@libsql/client")
-const { path } = require('path')
 
 const router = require('./src/rutas/rutas.js')
 // const { swaggerDocs } = require('./src/rutas/swagger')
@@ -19,7 +18,7 @@ const server = app.listen(PORT, (err) => {
     console.error('Error al iniciar el servidor:', err);
   } else {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`)
-    swaggerDocs(app, PORT);
+    // swaggerDocs(app, PORT);
   }
 })
 
