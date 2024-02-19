@@ -15,14 +15,12 @@ const opciones = {
 
 const swaggerSpec = swaggerJSDoc(opciones)
 
-
-const swaggerDocs = (app, port) => {
+const swaggerDocs = (app, PORT) => {
   app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
   app.use('/api/docs.json', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     res.send(swaggerSpec)
   })
 }
-// console.log(swaggerSpec);
-// console.log(opciones);
+
 module.exports = { swaggerDocs }
