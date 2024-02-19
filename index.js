@@ -18,7 +18,7 @@ const server = app.listen(PORT, (err) => {
     console.error('Error al iniciar el servidor:', err);
   } else {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`)
-    // swaggerDocs(app, PORT);
+    swaggerDocs(app, PORT);
   }
 })
 
