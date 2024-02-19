@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config()
 const { createClient } = require("@libsql/client")
 
 const router = require('./src/rutas/rutas.js')
-// const { swaggerDocs } = require('./src/rutas/swagger')
+const { swaggerDocs } = require('./src/rutas/swagger')
 
 const app = express()
 app.disable('x-powered-by')
