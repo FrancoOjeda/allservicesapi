@@ -1,4 +1,3 @@
-const baseDeDatos = require('../base/conexionDB')
 const { createUserWithEmailAndPassword: crearUsuarioEnFirebase } = require('firebase/auth')
 const { auth } = require('../firebase')
 const DBTurso = require('../base/tablas/tablas')
