@@ -10,7 +10,7 @@ const opciones = {
       version: '1.0.0',
     },
   },
-  apis: [`${path.join(__dirname, './rutas.js')}`],
+  apis: ['./src/rutas/rutas.js'],
 }
 
 const swaggerSpec = swaggerJSDoc(opciones)
