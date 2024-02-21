@@ -2,11 +2,24 @@ const express = require('express')
 const router = express.Router()
 
 
-const { postRegistroUsuario } = require('../controllers/controladorUsuarios')
-const { postInicioCliente, postInicioProfesional } = require('../controllers/controladorInicio')
 const { cerrarSesionCliente } = require('../controllers/cerrarSesion')
-
+const { postRegistroUsuario } = require('../controllers/controladorUsuarios')
+const { getListaProfesionales } = require('../controllers/solicitarProfesionales')
+const { postInicioCliente, postInicioProfesional } = require('../controllers/controladorInicio')
 router
+  /**
+  * @openapi
+  * /api/cerrarSesion:
+  *   get:
+  *     summary: Cerrar sesión del cliente.
+  *     description: Permite al cliente cerrar su sesión actual en el sistema.
+  *     responses:
+  *       '200':
+  *         description: Sesión cerrada exitosamente.
+  *       '401':
+  *         description: Error al cerrar sesión.
+  */
+  .get('/cerrarSesion', cerrarSesionCliente)
   /**
  * @openapi
  * /api/inicioCliente:
@@ -101,18 +114,45 @@ router
   */
   .post('/registroUsuarios', postRegistroUsuario)
   /**
-* @openapi
-* /api/cerrarSesion:
-*   get:
-*     summary: Cerrar sesión del cliente.
-*     description: Permite al cliente cerrar su sesión actual en el sistema.
-*     responses:
-*       '200':
-*         description: Sesión cerrada exitosamente.
-*       '401':
-*         description: Error al cerrar sesión.
-*/
-
-  .get('/cerrarSesion', cerrarSesionCliente)
+ * @swagger
+ * /solicitarProfesionales:
+ *   post:
+ *     summary: Solicitar profesionales por profesión
+ *     description: Permite solicitar profesionales filtrando por una profesión específica.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               profesion:
+ *                 type: string
+ *                 description: Nombre de la profesión por la cual filtrar los profesionales.
+ *     responses:
+ *       '200':
+ *         description: Profesionales encontrados satisfactoriamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 profesionales:
+ *                   type: array
+ *                   description: Lista de profesionales encontrados
+ *                   items:
+ *                     $ref: '#/components/schemas/Profesional'
+ *       '500':
+ *         description: Error al buscar los profesionales
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error detallado
+ */
+  .post('/solicitarProfesionales', getListaProfesionales)
 
 module.exports = router
