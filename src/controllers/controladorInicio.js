@@ -20,8 +20,8 @@ const iniciarSesion = async (email, password) => {
 
 const postInicioCliente = async (req, res) => {
   const { email, password } = req.body;
-  const credenciales = iniciarSesion(email, password)
-  if (!credenciales) {
+  const credenciales = await iniciarSesion(email, password)
+  if (credenciales.error) {
     return res.status(401).json({ error: 'Credenciales inválidas' });
   }
 
@@ -42,8 +42,11 @@ const postInicioCliente = async (req, res) => {
 
 const postInicioProfesional = async (req, res) => {
   const { email, password } = req.body;
-  credenciales = iniciarSesion(email, password)
-  if (!credenciales) { return }
+  credenciales = await iniciarSesion(email, password)
+  // console.log(credenciales);
+  if (credenciales.error) {
+    return res.status(401).json({ error: 'Credenciales inválidas' });
+  }
   const usuario = await DBTurso.execute({
     sql: 'SELECT * FROM Usuarios WHERE email = :email',
     args: { ':email': email }
@@ -57,6 +60,7 @@ const postInicioProfesional = async (req, res) => {
   }
   res.status(200).json({ profesional: (await usuario).rows }); // Establecer el código de estado como 200 y enviar el cliente como respuesta
 }
+
 
 
 module.exports = {

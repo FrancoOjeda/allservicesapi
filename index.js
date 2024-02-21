@@ -31,7 +31,7 @@ const opciones = {
   apis: ['./src/rutas/rutas*.js'],
 }
 const swaggerSpec = swaggerJSDoc(opciones)
-console.log(swaggerSpec);
+// console.log(swaggerSpec);
 
 
 app.get('/', (req, res) => {
