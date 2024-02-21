@@ -6,6 +6,7 @@ const { cerrarSesionCliente } = require('../controllers/cerrarSesion')
 const { postRegistroUsuario } = require('../controllers/controladorUsuarios')
 const { getListaProfesionales } = require('../controllers/solicitarProfesionales')
 const { postInicioCliente, postInicioProfesional } = require('../controllers/controladorInicio')
+
 router
   /**
   * @openapi
@@ -115,7 +116,7 @@ router
   .post('/registroUsuarios', postRegistroUsuario)
   /**
  * @swagger
- * /solicitarProfesionales:
+ * /api/solicitarProfesionales:
  *   post:
  *     summary: Solicitar profesionales por profesión
  *     description: Permite solicitar profesionales filtrando por una profesión específica.
