@@ -1,9 +1,7 @@
-const { onAuthStateChanged, signInWithEmailAndPassword } = require('firebase/auth')
+const { signInWithEmailAndPassword } = require('firebase/auth')
 const { auth } = require('../firebase')
 const DBTurso = require('../base/tablas/tablas')
 
-onAuthStateChanged(auth, async (user) => {
-})
 
 const iniciarSesion = async (email, password) => {
   try {
@@ -60,7 +58,6 @@ const postInicioProfesional = async (req, res) => {
   }
   res.status(200).json({ profesional: (await usuario).rows }); // Establecer el código de estado como 200 y enviar el cliente como respuesta
 }
-
 
 
 module.exports = {

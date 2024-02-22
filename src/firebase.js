@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 const { initializeApp } = require("firebase/app");
+require('dotenv').config()
 
 const { getAuth } = require("firebase/auth");
 // TODO: Add SDKs for Firebase products that you want to use
@@ -8,13 +9,13 @@ const { getAuth } = require("firebase/auth");
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDVBgiPyUVhy_4OR2UKYZXhm8XAMbrtZZg",
-  authDomain: "allserviceapp-api.firebaseapp.com",
-  projectId: "allserviceapp-api",
-  storageBucket: "allserviceapp-api.appspot.com",
-  messagingSenderId: "1095014450046",
-  appId: "1:1095014450046:web:3b8da22677407199c6692f",
-  measurementId: "G-N6RRNQ9Q6Q"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 };
 
 // Initialize Firebase
