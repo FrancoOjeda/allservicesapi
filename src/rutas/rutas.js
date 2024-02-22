@@ -287,7 +287,7 @@ router
   .get('/perfil', autorizarUsuario, perfil)
   /**
  * @swagger
- * /datosCliente:
+ * /api7datosCliente:
  *   get:
  *     summary: Obtener datos del cliente
  *     description: Permite obtener los datos del cliente autenticado.
@@ -334,7 +334,7 @@ router
   .get('/datosCliente', autorizarUsuario, getDatosCliente)
   /**
  * @swagger
- * /datosCliente:
+ * /api/datosCliente:
  *   post:
  *     summary: Actualizar o registrar datos del cliente
  *     description: Permite actualizar o registrar los datos del cliente autenticado.
