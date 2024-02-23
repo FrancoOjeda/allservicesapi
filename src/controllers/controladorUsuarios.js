@@ -46,8 +46,8 @@ async function postRegistroUsuario(req, res) {
     } else if (error.code === 'auth/weak-password') {
       res.status(400).json({ error: 'La contraseña debe tener al menos 6 caracteres' });
     } else {
-      res.status(400).json({ error: 'Algo no ha salido como esperábamos' });
       console.log(error);
+      res.status(400).json({ error: 'Algo no ha salido como esperábamos' });
     }
   }
 }
