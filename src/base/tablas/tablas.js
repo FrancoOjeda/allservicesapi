@@ -1,10 +1,10 @@
-const dotenv = require('dotenv').config()
+require('dotenv').config()
 const { createClient } = require("@libsql/client")
 
 
 const DB = createClient({
-  url: "libsql://wealthy-doctor-mindbender-francoojeda.turso.io",
-  authToken: process.env.DB_TOKEN
+	url: "libsql://wealthy-doctor-mindbender-francoojeda.turso.io",
+	authToken: process.env.DB_TOKEN
 })
 
 
