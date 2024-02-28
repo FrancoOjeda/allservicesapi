@@ -5,7 +5,7 @@ const perfil = async (req, res) => {
     const user = req.user;
     const email = user.reloadUserInfo.email;
     const [usuario] = await pool.query({
-      sql: 'SELECT * FROM Usuarios WHERE email = ?',
+      sql: 'SELECT * FROM usuarios WHERE email = ?',
       values: [email]
     });
 

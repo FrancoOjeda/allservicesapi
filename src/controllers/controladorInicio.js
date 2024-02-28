@@ -29,7 +29,7 @@ const postInicioCliente = async (req, res) => {
   try {
     // Consultar el usuario en la base de datos
     const [usuario, fields] = await pool.query({
-      sql: 'SELECT * FROM Usuarios WHERE email = ?',
+      sql: 'SELECT * FROM usuarios WHERE email = ?',
       values: [email]
     });
 
@@ -60,7 +60,7 @@ const postInicioProfesional = async (req, res) => {
   try {
     // Consultar el usuario en la base de datos
     const [usuario, fields] = await pool.query({
-      sql: 'SELECT * FROM Usuarios WHERE email = ?',
+      sql: 'SELECT * FROM usuarios WHERE email = ?',
       values: [email]
     });
 
