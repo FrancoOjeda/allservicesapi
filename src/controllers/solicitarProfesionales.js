@@ -1,24 +1,31 @@
-const DBTurso = require('../base/tablas/tablas')
+const { pool } = require('../base/tablas/DB');
 
 const getListaProfesionales = async (req, res) => {
-  const { profesion } = req.body
-  const profesionales = await DBTurso.execute({
-    sql: 'SELECT usuarios.* FROM usuarios JOIN profesionales ON usuarios.usuario_id = profesionales.usuario_id JOIN profesional_profesiones ON profesionales.profesional_id = profesional_profesiones.profesional_id JOIN profesiones ON profesional_profesiones.profesion_id = profesiones.profesion_id WHERE profesiones.nombre = :profesion',
-    args: { ':profesion': profesion }
-  })
+  try {
+    const { profesion } = req.body;
+    const profesionales = await pool.query({
+      sql: `SELECT usuarios.* 
+            FROM usuarios 
+            JOIN profesionales ON usuarios.usuario_id = profesionales.usuario_id 
+            JOIN profesional_profesiones ON profesionales.profesional_id = profesional_profesiones.profesional_id 
+            JOIN profesiones ON profesional_profesiones.profesion_id = profesiones.profesion_id 
+            WHERE profesiones.nombre = ?`,
+      values: [profesion]
+    });
 
-  if (!profesionales) {
-    res.status(500).json({ error: 'Error al buscar los profesionales' });
+    // Verificar si se encontraron profesionales
+    if (!profesionales || profesionales.length === 0) {
+      return res.status(404).json({ error: 'No se encontraron profesionales para la profesión especificada' });
+    }
+
+    // Enviar la lista de profesionales encontrados
+    res.status(200).json({ profesionales });
+  } catch (error) {
+    console.error('Error al buscar los profesionales:', error.message);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
-  if (!(await profesionales).rows) {
-    res.status(500).json({ error: 'Error al buscar los profesionales' });
-  }
-
-  console.log(profesionales);
-  res.status(200).json({ profesionales: (await profesionales).rows });
-
-}
+};
 
 module.exports = {
   getListaProfesionales
-}
+};

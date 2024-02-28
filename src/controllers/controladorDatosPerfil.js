@@ -1,14 +1,27 @@
-const DBTurso = require('../base/tablas/tablas')
+const { pool } = require('../base/tablas/DB');
 
 const perfil = async (req, res) => {
-  const user = req.user
-  const email = user.reloadUserInfo.email
-  const usuario = await DBTurso.execute({
-    sql: 'SELECT * FROM Usuarios WHERE email = :email',
-    args: { ':email': email }
-  })
-  res.status(200).json({ usuario: (await usuario).rows }); // Establecer el código de estado como 200 y enviar el usuario como respuesta
-}
+  try {
+    const user = req.user;
+    const email = user.reloadUserInfo.email;
+    const [usuario] = await pool.query({
+      sql: 'SELECT * FROM Usuarios WHERE email = ?',
+      values: [email]
+    });
+
+    // Verificar si se encontró el usuario
+    if (!usuario || usuario.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    // Enviar el usuario como respuesta
+    res.status(200).json({ usuario: usuario[0] });
+  } catch (error) {
+    console.error('Error al obtener el perfil del usuario:', error.message);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
 module.exports = {
   perfil
-}
+};

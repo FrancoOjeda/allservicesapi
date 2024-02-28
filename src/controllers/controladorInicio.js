@@ -1,8 +1,9 @@
 const { signInWithEmailAndPassword } = require('firebase/auth')
 const { auth } = require('../firebase')
-const DBTurso = require('../base/tablas/tablas')
+const { pool } = require('../base/tablas/DB')
 
 
+// Verifica las credenciales de acceso en firebase
 const iniciarSesion = async (email, password) => {
   try {
     const credenciales = await signInWithEmailAndPassword(auth, email, password)
@@ -18,46 +19,64 @@ const iniciarSesion = async (email, password) => {
 
 const postInicioCliente = async (req, res) => {
   const { email, password } = req.body;
-  const credenciales = await iniciarSesion(email, password)
+
+  // Iniciar sesión del cliente
+  const credenciales = await iniciarSesion(email, password);
   if (credenciales.error) {
     return res.status(401).json({ error: 'Credenciales inválidas' });
   }
 
-  const usuario = await DBTurso.execute({
-    sql: 'SELECT * FROM Usuarios WHERE email = :email',
-    args: { ':email': email }
-  })
-  if (!usuario) {
-    console.error('Error al buscar el cliente:', err.message);
+  try {
+    // Consultar el usuario en la base de datos
+    const [usuario, fields] = await pool.query({
+      sql: 'SELECT * FROM Usuarios WHERE email = ?',
+      values: [email]
+    });
+
+    // Verificar si se obtuvo algún resultado
+    if (!usuario || usuario.length === 0) {
+      return res.status(401).json({ error: 'Credenciales inválidas' });
+    }
+
+    // El usuario existe, enviarlo como respuesta
+    res.status(200).json({ cliente: usuario[0] });
+  } catch (error) {
+    console.error('Error al buscar el cliente:', error.message);
     return res.status(500).json({ error: 'Error interno del servidor' });
   }
-  if (!(await usuario).rows) {
-    return res.status(401).json({ error: 'Credenciales inválidas' }); // Cambiar el código de estado a 401 para indicar credenciales inválidas
-  }
-  res.status(200).json({ cliente: (await usuario).rows }); // Establecer el código de estado como 200 y enviar el cliente como respuesta
-}
+};
+
 
 
 const postInicioProfesional = async (req, res) => {
   const { email, password } = req.body;
-  credenciales = await iniciarSesion(email, password)
-  // console.log(credenciales);
+
+  // Iniciar sesión del profesional
+  const credenciales = await iniciarSesion(email, password);
   if (credenciales.error) {
     return res.status(401).json({ error: 'Credenciales inválidas' });
   }
-  const usuario = await DBTurso.execute({
-    sql: 'SELECT * FROM Usuarios WHERE email = :email',
-    args: { ':email': email }
-  })
-  if (!usuario) {
-    console.error('Error al buscar el cliente:', err.message);
+
+  try {
+    // Consultar el usuario en la base de datos
+    const [usuario, fields] = await pool.query({
+      sql: 'SELECT * FROM Usuarios WHERE email = ?',
+      values: [email]
+    });
+
+    // Verificar si se obtuvo algún resultado
+    if (!usuario || usuario.length === 0) {
+      return res.status(401).json({ error: 'Credenciales inválidas' });
+    }
+
+    // El usuario existe, enviarlo como respuesta
+    res.status(200).json({ profesional: usuario[0] });
+  } catch (error) {
+    console.error('Error al buscar el profesional:', error.message);
     return res.status(500).json({ error: 'Error interno del servidor' });
   }
-  if (!(await usuario).rows) {
-    return res.status(401).json({ error: 'Credenciales inválidas' }); // Cambiar el código de estado a 401 para indicar credenciales inválidas
-  }
-  res.status(200).json({ profesional: (await usuario).rows }); // Establecer el código de estado como 200 y enviar el cliente como respuesta
-}
+};
+
 
 
 module.exports = {

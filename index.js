@@ -1,8 +1,9 @@
 const swaggerJSDoc = require('swagger-jsdoc')
 const express = require('express')
 const cors = require('cors')
-const dotenv = require('dotenv').config()
+require('dotenv').config()
 const swaggerUi = require('swagger-ui-express');
+// const { autorizarUsuario } = require('./src/autorizacion/autorizarUsuario.js')
 
 // const { createClient } = require("@libsql/client")
 
@@ -10,7 +11,7 @@ const router = require('./src/rutas/rutas.js')
 // const { swaggerSpec } = require('./src/rutas/swagger')
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4321
 
 app.disable('x-powered-by')
 app.use(express.json())
@@ -31,7 +32,6 @@ const opciones = {
   apis: ['./src/rutas/rutas*.js'],
 }
 const swaggerSpec = swaggerJSDoc(opciones)
-// console.log(swaggerSpec);
 
 
 app.get('/', (req, res) => {
@@ -40,13 +40,14 @@ app.get('/', (req, res) => {
   <head>
   <title>Servidor corriendo</title>
   </head>
-  <body >
-  <h1>Servidor corriendo</h1>
+  <body style ="background-color: #f2f2f2; display: grid; place-content:center">
+  <h1 style = "text-align: center;">Servidor corriendo</h1>
   </body>
   </html>
   `
   res.send(htmlResponse)
 })
+
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -61,7 +62,6 @@ const server = app.listen(PORT, (err) => {
     console.error('Error al iniciar el servidor:', err);
   } else {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`)
-    // swaggerDocs(app);
   }
 })
 
@@ -69,4 +69,4 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint no encontrado' })
 })
 
-// module.exports = { server }
+module.exports = { server }

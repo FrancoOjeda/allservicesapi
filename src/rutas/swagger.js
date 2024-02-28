@@ -10,17 +10,19 @@
 //       version: '1.0.0',
 //     },
 //   },
-//   apis: ['./src/rutas/rutas*.js'],
+//   apis: [`${path.join(__dirname, './rutas.js')}`],
 // }
 
 // const swaggerSpec = swaggerJSDoc(opciones)
 
+
 // const swaggerDocs = (app, port) => {
-//   app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
-//   app.use('/api/docs.json', (req, res) => {
+//   app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+//   app.use('/docs.json', (req, res) => {
 //     res.setHeader('Content-Type', 'application/json')
 //     res.send(swaggerSpec)
 //   })
 // }
-
+// // console.log(swaggerSpec);
+// // console.log(opciones);
 // module.exports = { swaggerDocs }

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 const { initializeApp } = require("firebase/app");
-require('dotenv').config()
+require("dotenv").config();
 
 const { getAuth } = require("firebase/auth");
 // TODO: Add SDKs for Firebase products that you want to use
@@ -19,5 +19,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const fireApp = initializeApp(firebaseConfig);
-const auth = getAuth(fireApp)
-module.exports = { fireApp, auth }
+const auth = getAuth(fireApp);
+module.exports = { fireApp, auth };

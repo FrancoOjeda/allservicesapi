@@ -9,6 +9,7 @@ const { postInicioCliente, postInicioProfesional } = require('../controllers/con
 const { autorizarUsuario } = require('../autorizacion/autorizarUsuario')
 const { perfil } = require('../controllers/controladorDatosPerfil')
 const { getDatosCliente, postDatosCliente } = require('../controllers/controladorDatosCliente')
+const { getDatosProfesional, postHorarioProfesional } = require('../controllers/controladorDatosProfesional')
 
 router
   /**
@@ -287,7 +288,7 @@ router
   .get('/perfil', autorizarUsuario, perfil)
   /**
  * @swagger
- * /api7datosCliente:
+ * /datosCliente:
  *   get:
  *     summary: Obtener datos del cliente
  *     description: Permite obtener los datos del cliente autenticado.
@@ -334,7 +335,7 @@ router
   .get('/datosCliente', autorizarUsuario, getDatosCliente)
   /**
  * @swagger
- * /api/datosCliente:
+ * /datosCliente:
  *   post:
  *     summary: Actualizar o registrar datos del cliente
  *     description: Permite actualizar o registrar los datos del cliente autenticado.
@@ -372,5 +373,7 @@ router
  */
 
   .post('/datosCliente', autorizarUsuario, postDatosCliente)
+  .get('/datosProfesional', autorizarUsuario, getDatosProfesional)
+  .post('/horarioProfesional', autorizarUsuario, postHorarioProfesional)
 
 module.exports = router
