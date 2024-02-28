@@ -22,7 +22,7 @@ async function postRegistroUsuario(req, res) {
       return res.status(500).json({ error: 'Error al registrar el usuario' });
     }
     const nuevoUsuario = await pool.query({
-      sql: 'INSERT INTO Usuarios (nombre, apellido, email, codigo_postal, ciudad, provincia) VALUES (?, ?, ?, ?, ?, ?)',
+      sql: 'INSERT INTO usuarios (nombre, apellido, email, codigo_postal, ciudad, provincia) VALUES (?, ?, ?, ?, ?, ?)',
       values: [nombre, apellido, email, codigo_postal, ciudad, provincia]
     });
 
