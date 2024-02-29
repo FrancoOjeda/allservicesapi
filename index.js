@@ -5,10 +5,14 @@ require('dotenv').config()
 const swaggerUi = require('swagger-ui-express');
 // const { autorizarUsuario } = require('./src/autorizacion/autorizarUsuario.js')
 
-// const { createClient } = require("@libsql/client")
-
+const corsOptions = {
+  origin: 'http://localhost',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}
 const router = require('./src/rutas/rutas.js')
 // const { swaggerSpec } = require('./src/rutas/swagger')
+
 
 const app = express()
 const PORT = process.env.PORT || 4321
@@ -16,7 +20,7 @@ const PORT = process.env.PORT || 4321
 app.disable('x-powered-by')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors())
+app.use(cors(corsOptions))
 app.use('/api', router)
 
 // Swagger config
