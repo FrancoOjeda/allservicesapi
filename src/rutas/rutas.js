@@ -10,6 +10,7 @@ const { autorizarUsuario } = require('../autorizacion/autorizarUsuario')
 const { perfil } = require('../controllers/controladorDatosPerfil')
 const { getDatosCliente, postDatosCliente } = require('../controllers/controladorDatosCliente')
 const { getDatosProfesional, postHorarioProfesional } = require('../controllers/controladorDatosProfesional')
+const { cargarProfesiones } = require('../controllers/controladorCargarProfesiones')
 
 router
   /**
@@ -288,7 +289,7 @@ router
   .get('/perfil', autorizarUsuario, perfil)
   /**
  * @swagger
- * /datosCliente:
+ * /api/datosCliente:
  *   get:
  *     summary: Obtener datos del cliente
  *     description: Permite obtener los datos del cliente autenticado.
@@ -335,7 +336,7 @@ router
   .get('/datosCliente', autorizarUsuario, getDatosCliente)
   /**
  * @swagger
- * /datosCliente:
+ * /api/datosCliente:
  *   post:
  *     summary: Actualizar o registrar datos del cliente
  *     description: Permite actualizar o registrar los datos del cliente autenticado.
@@ -373,7 +374,101 @@ router
  */
 
   .post('/datosCliente', autorizarUsuario, postDatosCliente)
+
+  /**
+ * @swagger
+ * /api/datosProfesional:
+ *   get:
+ *     summary: Obtener datos del profesional
+ *     description: Obtiene los datos del profesional autenticado.
+ *     responses:
+ *       '200':
+ *         description: Datos del profesional obtenidos correctamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 profesional:
+ *                   type: object
+ *                   properties:
+ *                     profesional_id:
+ *                       type: integer
+ *                       description: ID del profesional
+ *                     usuario_id:
+ *                       type: integer
+ *                       description: ID del usuario
+ *                     disponibilidad_horaria:
+ *                       type: string
+ *                       description: Disponibilidad horaria del profesional
+ *                     estado:
+ *                       type: integer
+ *                       description: Estado del profesional
+ *                 oficios:
+ *                   type: array
+ *                   description: Oficios del profesional
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         description: ID del oficio
+ *                       nombre:
+ *                         type: string
+ *                         description: Nombre del oficio
+ *       '404':
+ *         description: Profesional no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error
+ */
+
   .get('/datosProfesional', autorizarUsuario, getDatosProfesional)
+  /**
+ * @swagger
+ * /api/horarioProfesional:
+ *   post:
+ *     summary: Actualizar o registrar horario del profesional
+ *     description: Permite actualizar o registrar el horario del profesional autenticado.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               disponibilidad_horaria:
+ *                 type: string
+ *                 description: Disponibilidad horaria del profesional.
+ *     responses:
+ *       '201':
+ *         description: Horario del profesional actualizado o registrado correctamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   description: Mensaje de éxito
+ *       '500':
+ *         description: Error al actualizar o registrar el horario del profesional
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error detallado
+ */
+
   .post('/horarioProfesional', autorizarUsuario, postHorarioProfesional)
+  .post('/cargarProfesiones', cargarProfesiones)
 
 module.exports = router
