@@ -10,17 +10,25 @@
 <body class="bg:[f2f2f2]">
   <h1 class="text-5xl text-center font-bold p-10 text-[#a6a2a2]">All Services API</h1>
   <!-- Navbar -->
-  <nav class="bg-[#f2f2f2] p-5 flex flex-row items-center justify-around">
-    <div class="bg-[#38B832] rounded-3xl px-7 py-3">
-      <a class="hover:text-black/100  text-white " href="#">Nosotros</a>
+  <nav class="bg-[#f2f2f2] p-3 flex flex-row items-center justify-around">
+    <div class="bg-[#38B832] rounded-3xl px-7 py-2  w-max-[10%] text-center">
+      <a class="hover:text-black/100  text-white" href="#quienesSomos">Nosotros</a>
     </div>
-    <div class="bg-[#38B832] rounded-3xl px-7 py-3">
-      <a class="hover:text-black/100  text-white " href="#">Website</a>
+    <div class="bg-[#38B832] rounded-3xl px-7 py-2  w-max-[10%] text-center flex flex-row">
+      <svg class="text-white" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-app-window"
+        width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+        <path d="M6 8h.01" />
+        <path d="M9 8h.01" />
+      </svg>
+      <a class="hover:text-black/100 pl-2 text-white " href="#">Sitio web</a>
     </div>
-    <div class="bg-[#38B832] rounded-3xl px-7 py-3">
-      <a class="hover:text-black/100  text-white " href="/api-docs">Docs</a>
+    <div class="bg-[#38B832] rounded-3xl px-7 py-2 w-max-[10%] text-center">
+      <a class="hover:text-black/100 text-white " href="/api-docs">Documentación</a>
     </div>
-    <div class="bg-[#38B832] rounded-3xl px-7 py-3 flex flex-row items-center">
+    <div class="bg-[#38B832] rounded-3xl px-7 py-2 flex flex-row items-center w-max-[10%] text-center">
       <svg viewBox="0 0 256 250" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid">
         <path
@@ -30,7 +38,7 @@
       <a class="hover:text-black/100  text-white mx-2" target="_blank" rel="noopener noreferrer"
         href="https://github.com/No-Country/c16-126-n-react">Github</a>
     </div class="bg-[#38B832] rounded-3xl px-7 py-3">
-    <div class="bg-[#38B832] rounded-3xl px-7 py-3 flex flex-row items-center">
+    <div class="bg-[#38B832] rounded-3xl px-7 py-2 flex flex-row items-center w-max-[10%] text-center">
       <svg width="10" height="16" viewBox="0 0 54 80" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_912_3)">
           <path
@@ -55,11 +63,142 @@
           </clipPath>
         </defs>
       </svg>
-
       <a class="hover:text-black/100 mx-2 text-white " target="_blank" rel="noopener noreferrer"
         href="https://www.figma.com/file/Cf1oTmGWXlKIRCI7ESnn97/Proyecto-Servicios-Hogar?type=design&node-id=101-2&mode=design&t=Amgc1lh9F9Th2yy5-0">Figma</a>
     </div>
   </nav>
+  <section class="flex flex-row lg:flex-row items-center justify-around mt-7">
+    <div class="container w-1/2">
+      <p class="text-2xl font-bold mb-2">Aplicación de servicios para el hogar</p>
+      <p class="text-xl font-semibold text-gray-600 text-pretty">
+        API Rest para la aplicación de contratacion de servicios del hogar, desarrollada en equipo para la simulación de
+        <strong></strong>No Country.</strong> Es una aplicación dedicada a satisfacer la necesidad que suelen tener los
+        argentinos de pedir referencias de profesionales de todo tipo, antes de realizar un trabajo en el hogar, de la
+        mejor manera posible.
+      </p>
+    </div>
+    <div class="m-5">
+      <img src="https://i.blogs.es/6f95f6/tools-864983_1280/650_1200.jpg"
+        alt="Imagen de tablero con herramientas de trabajo" class="size-60 rounded-full cover " />
+    </div>
+  </section>
+
+  <section id="quienesSomos">
+    <h1 class="text-3xl font-semibold text-center text-[#a6a2a2] m-10">Quienes Somos</h1>
+    {{!-- cards de los integrantes --}}
+    <section class="flex flex-col items-center my-8">
+      <p class="text-xl font-semibold text-gray-600 text-pretty w-[60ch]">Somos un equipo de trabajo formado
+        a través de
+        <span class="text-[#a6a2a2] font-bold">No
+          Country</span>,
+        que se puso como objetivo desarrollar una <span class="text-[#a6a2a2] font-bold">aplicación
+          de uso real</span>, que pueda satisfacer de forma eficiente una necesidad. El equipo esta conformado por 3
+        <span class="text-[#a6a2a2] font-bold">desarrolladores Frontend</span>, una <span
+          class="text-[#a6a2a2] font-bold">QA manual y Diseñadora UX/UI</span>, y un
+        <span class="text-[#a6a2a2] font-bold">Desarrollador Backend</span>. Todos ellos
+        apasionados de la programación.
+      </p>
+    </section>
+    <section class="grid grid-cols-1 lg:grid-cols-2 justify-around items-center">
+      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
+        <div class="flex flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/106778830?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+            alt="Avatar de Laura Marcela Rozo Rodriguez">
+          <div class="flex flex-col">
+            <p class="text-2xl font-semibold">Laura Marcela Rozo Rodriguez</p>
+            <p class="text-xl font-semibold text-gray-600">Rol: Tester QA - Diseño UI/UX </p>
+            <a href="" class="flex flex-row text-center items-center">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                viewBox="0 0 256 256">
+                <path
+                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                  fill="#0A66C2" />
+              </svg>
+              <span class="mx-2 font-sembold">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </article>
+      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
+        <div class="flex flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/109558787?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+            alt="Avatar de Franco Martí­n Ojeda">
+          <div class="flex flex-col">
+            <p class="text-2xl font-semibold">Franco Martí­n Ojeda</p>
+            <p class="text-xl font-semibold text-gray-600">Rol: Desarrollador Backend</p>
+            <a href="https://www.linkedin.com/in/franco-ojeda-5470b399" class="flex flex-row text-center items-center">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                viewBox="0 0 256 256">
+                <path
+                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                  fill="#0A66C2" />
+              </svg>
+              <span class="mx-2 font-sembold">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </article>
+      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
+        <div class="flex flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/101590889?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+            alt="Avatar de Sebastian Gallego">
+          <div class="flex flex-col">
+            <p class="text-2xl font-semibold">Sebastian Gallego</p>
+            <p class="text-xl font-semibold text-gray-600">Rol: Desarrollador Frontend</p>
+            <a href="https://www.linkedin.com/in/sebastiangallegocanon/" class="flex flex-row text-center items-center">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                viewBox="0 0 256 256">
+                <path
+                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                  fill="#0A66C2" />
+              </svg>
+              <span class="mx-2 font-sembold">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </article>
+      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
+        <div class="flex flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/54607894?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+            alt="Avatar de Eduardo Hidalgo">
+          <div class="flex flex-col">
+            <p class="text-2xl font-semibold">Eduardo Hidalgo</p>
+            <p class="text-xl font-semibold text-gray-600">Rol: Desarrollador Frontend</p>
+            <a href="https://www.linkedin.com/in/eduardo-antonio-hidalgo/"
+              class="flex flex-row text-center items-center">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                viewBox="0 0 256 256">
+                <path
+                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                  fill="#0A66C2" />
+              </svg>
+              <span class="mx-2 font-sembold">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </article>
+      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
+        <div class="flex flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/128101914?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+            alt="Avatar de Gabriel Taboada">
+          <div class="flex flex-col">
+            <p class="text-2xl font-semibold">Gabriel Taboada</p>
+            <p class="text-xl font-semibold text-gray-600">Rol: Desarrollador Frontend</p>
+            <a href="#" class="flex flex-row text-center items-center">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                viewBox="0 0 256 256">
+                <path
+                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                  fill="#0A66C2" />
+              </svg>
+              <span class="mx-2 font-sembold">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </section>
+
 </body>
 
 </html>
