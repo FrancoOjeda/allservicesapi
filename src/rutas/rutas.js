@@ -11,7 +11,7 @@ const { perfil } = require('../controllers/controladorDatosPerfil')
 const { getDatosCliente, postDatosCliente } = require('../controllers/controladorDatosCliente')
 const { getDatosProfesional, postHorarioProfesional } = require('../controllers/controladorDatosProfesional')
 const { cargarProfesiones } = require('../controllers/controladorCargarProfesiones')
-
+const { getProfesiones } = require('../controllers/controladorProfesiones')
 router
   /**
   * @swagger
@@ -469,6 +469,50 @@ router
  */
 
   .post('/horarioProfesional', autorizarUsuario, postHorarioProfesional)
+  /**
+   * @swagger
+   * /api/profesiones:
+   *   get:
+   *     summary: Obtener lista de profesiones
+   *     description: Obtiene la lista de profesiones disponibles en la base de datos.
+   *     responses:
+   *       '200':
+   *         description: Lista de profesiones obtenida correctamente
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: array
+   *               items:
+   *                 type: object
+   *                 properties:
+   *                   profesion_id:
+   *                     type: integer
+   *                     description: ID de la profesión
+   *                   nombre:
+   *                     type: string
+   *                     description: Nombre de la profesión
+   *                   descripcion:
+   *                     type: string
+   *                     description: Descripción de la profesión
+   *               example:
+   *                 - profesion_id: 1
+   *                   nombre: Ingeniero
+   *                   descripcion: Profesión relacionada con la ingeniería
+   *                 - profesion_id: 2
+   *                   nombre: Médico
+   *                   descripcion: Profesión relacionada con la medicina
+   *       '500':
+   *         description: Error al obtener la lista de profesiones
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 error:
+   *                   type: string
+   *                   description: Mensaje de error detallado
+   */
+
   .post('/cargarProfesiones', cargarProfesiones)
 
 module.exports = router

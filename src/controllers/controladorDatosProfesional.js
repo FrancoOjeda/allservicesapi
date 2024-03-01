@@ -56,7 +56,7 @@ module.exports = {
 
 
 const postHorarioProfesional = async (req, res) => {
-  const { disponibilidad_horaria: horario, profesion } = req.body;
+  const { disponibilidad_horaria: horario } = req.body;
   try {
     const user = req.user;
     const email = user.reloadUserInfo.email;
