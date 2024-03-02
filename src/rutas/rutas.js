@@ -512,7 +512,7 @@ router
    *                   type: string
    *                   description: Mensaje de error detallado
    */
-
+  .get('/profesiones', getProfesiones)
   .post('/cargarProfesiones', cargarProfesiones)
 
 module.exports = router
