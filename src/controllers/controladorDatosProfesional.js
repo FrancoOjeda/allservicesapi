@@ -8,12 +8,31 @@ const verificarRegistro = async (email) => {
   return registro;
 };
 
-const obtenerOficiosDelProfesional = async (profesionalId) => {
-  const [oficios] = await pool.query({
-    sql: 'SELECT * FROM profesional_profesiones WHERE profesional_id = ?',
-    values: [profesionalId]
+const verificarProfesion = async (profesionId) => {
+  const [result] = await pool.query({
+    sql: 'SELECT COUNT(*) AS count FROM profesiones WHERE profesion_id = ?',
+    values: [profesionId]
   });
-  return oficios;
+
+  return result[0].count > 0;
+};
+const obtenerOficiosDelProfesional = async (profesionalId) => {
+  try {
+    const query = `
+      SELECT pp.profesional_id, pp.profesion_id, pp.fecha_alta, p.nombre AS nombre_profesion
+      FROM profesional_profesiones pp
+      JOIN profesiones p ON pp.profesion_id = p.profesion_id
+      WHERE pp.profesional_id = ?
+    `;
+    const [oficios] = await pool.query({
+      sql: query,
+      values: [profesionalId]
+    });
+    return oficios;
+  } catch (error) {
+    console.error('Error al obtener los oficios del profesional:', error);
+    throw error;
+  }
 };
 
 const obtenerUsuarioId = async (email) => {
@@ -88,9 +107,36 @@ const postHorarioProfesional = async (req, res) => {
   }
 };
 
+const postProfesionUsuario = async (req, res) => {
+  const { profesion: profesion_id } = req.body;
+  const fechaActual = new Date();
+  const dia = fechaActual.getDate()
+  const mes = fechaActual.getMonth() + 1; // Sumar 1 al mes para obtener el mes correcto
+  const año = fechaActual.getFullYear()
+  const fecha_alta = `${año}-${mes}-${dia}`; // Orden correcto de año-mes-día
+  try {
+    const user = req.user
+    const email = user.reloadUserInfo.email
+    const [usuarioId] = await obtenerUsuarioId(email)
+    const [profesionalId] = await obtenerProfesionalId(usuarioId.usuario_id)
+    const existeProfesion = await verificarProfesion(profesion_id)
+    if (!existeProfesion) {
+      return res.status(404).json({ error: 'Profesion no encontrada' });
+    }
+    const nuevaProfesion = await pool.query({
+      sql: 'INSERT INTO profesional_profesiones (profesional_id, profesion_id, fecha_alta) VALUES (?, ?, ?)',
+      values: [profesionalId.profesional_id, profesion_id, fecha_alta],
+    })
+    res.status(201).json({ mensaje: 'Profesión agregada correctamente' });
+  } catch (error) {
+    console.error('Error al agregar profesión:', error);
+    res.status(500).json({ error: 'Error al agregar profesión' });
+  }
+}
 
 
 module.exports = {
   getDatosProfesional,
-  postHorarioProfesional
+  postHorarioProfesional,
+  postProfesionUsuario
 }
