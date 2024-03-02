@@ -20,6 +20,7 @@ const PORT = process.env.PORT || 4321
 app.engine('hbs', hbs.engine({ extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'src', 'views'))
+app.use(express.static(path.join(__dirname, 'src', 'public')))
 // Server-config
 app.disable('x-powered-by')
 app.use(express.json())
