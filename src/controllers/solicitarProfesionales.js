@@ -3,13 +3,13 @@ const { pool } = require('../base/tablas/DB');
 const getListaProfesionales = async (req, res) => {
   try {
     const { profesion } = req.body;
-    const profesionales = await pool.query({
+    const [profesionales] = await pool.query({
       sql: `SELECT usuarios.* 
             FROM usuarios 
             JOIN profesionales ON usuarios.usuario_id = profesionales.usuario_id 
             JOIN profesional_profesiones ON profesionales.profesional_id = profesional_profesiones.profesional_id 
             JOIN profesiones ON profesional_profesiones.profesion_id = profesiones.profesion_id 
-            WHERE profesiones.nombre = ?`,
+            WHERE profesiones.profesion_id = ?`,
       values: [profesion]
     });
 
