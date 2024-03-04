@@ -617,7 +617,7 @@ router
  *                   type: string
  *                   description: Mensaje de error detallado
  */
-  .get('/profesional', getProfesional)
+  .post('/profesional', getProfesional)
 
   .post('/cargarProfesiones', cargarProfesiones)
 module.exports = router

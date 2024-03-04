@@ -4,7 +4,7 @@ const { obtenerOficiosDelProfesional, verificarRegistro } = require('./controlad
 const getProfesional = async (req, res) => {
 
   try {
-    const { email, usuario_id } = req.body
+    const { email } = req.body
     const profesional = await verificarRegistro(email);
     if (!profesional || profesional.length === 0) {
       return res.status(404).json({ error: 'Profesional no encontrado' });
