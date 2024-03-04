@@ -295,8 +295,8 @@ router
   *             type: object
   *             properties:
   *               profesion:
-  *                 type: string
-  *                 description: Nombre de la profesión por la cual filtrar los profesionales.
+  *                 type: integer
+  *                 description: Id de la profesión por la cual filtrar los profesionales.
   *     responses:
   *       '200':
   *         description: Profesionales encontrados satisfactoriamente
