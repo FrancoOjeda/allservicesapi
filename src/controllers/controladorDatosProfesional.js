@@ -69,10 +69,6 @@ const getDatosProfesional = async (req, res) => {
   }
 };
 
-module.exports = {
-  getDatosProfesional
-};
-
 
 const postHorarioProfesional = async (req, res) => {
   const { disponibilidad_horaria: horario } = req.body;
@@ -139,5 +135,6 @@ module.exports = {
   getDatosProfesional,
   postHorarioProfesional,
   postProfesionUsuario,
-  obtenerOficiosDelProfesional
+  obtenerOficiosDelProfesional,
+  verificarRegistro
 }

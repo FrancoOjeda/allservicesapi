@@ -4,7 +4,7 @@ const router = express.Router()
 
 const { cerrarSesionCliente } = require('../controllers/cerrarSesion')
 const { postRegistroUsuario } = require('../controllers/controladorUsuarios')
-const { getListaProfesionales } = require('../controllers/solicitarProfesionales')
+const { getListaProfesionales } = require('../controllers/controladoreSolicitarProfesionales')
 const { postInicioCliente, postInicioProfesional } = require('../controllers/controladorInicio')
 const { autorizarUsuario } = require('../autorizacion/autorizarUsuario')
 const { perfil } = require('../controllers/controladorDatosPerfil')
@@ -12,6 +12,8 @@ const { getDatosCliente, postDatosCliente } = require('../controllers/controlado
 const { getDatosProfesional, postHorarioProfesional, postProfesionUsuario } = require('../controllers/controladorDatosProfesional')
 const { cargarProfesiones } = require('../controllers/controladorCargarProfesiones')
 const { getProfesiones } = require('../controllers/controladorProfesiones')
+const { getProfesional } = require('../controllers/controladorProfesional')
+
 router
   /**
    * tags:
@@ -540,7 +542,82 @@ router
    *                   description: Mensaje de error detallado
    */
   .get('/profesiones', getProfesiones)
+  /**
+ * @swagger
+ * /api/profesional:
+ *   get:
+ *     tags: [Profesionales]
+ *     summary: Obtener datos del profesional
+ *     description: Obtiene los datos del profesional autenticado.
+ *     parameters:
+ *       - name: email
+ *         in: query
+ *         description: Correo electrónico del usuario
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Datos del profesional obtenidos correctamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 profesional:
+ *                   type: object
+ *                   properties:
+ *                     profesional_id:
+ *                       type: integer
+ *                       description: ID del profesional
+ *                     usuario_id:
+ *                       type: integer
+ *                       description: ID del usuario
+ *                     disponibilidad_horaria:
+ *                       type: string
+ *                       description: Disponibilidad horaria del profesional
+ *                     estado:
+ *                       type: integer
+ *                       description: Estado del profesional
+ *                 oficios:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       profesional_id:
+ *                         type: integer
+ *                         description: ID del profesional
+ *                       profesion_id:
+ *                         type: integer
+ *                         description: ID de la profesión
+ *                       fecha_alta:
+ *                         type: string
+ *                         description: Fecha de alta del oficio
+ *                       nombre_profesion:
+ *                         type: string
+ *                         description: Nombre de la profesión
+ *       '404':
+ *         description: Profesional no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error detallado
+ *       '500':
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error detallado
+ */
+  .get('/profesional', getProfesional)
 
   .post('/cargarProfesiones', cargarProfesiones)
-
 module.exports = router
