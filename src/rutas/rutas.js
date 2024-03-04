@@ -309,6 +309,9 @@ router
  *                   items:
  *                     type: object
  *                     properties:
+ *                       usuario_id:
+ *                         type: integer
+ *                         description: ID del usuario
  *                       nombre:
  *                         type: string
  *                         description: Nombre del profesional
