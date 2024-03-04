@@ -1,16 +1,52 @@
-<!DOCTYPE html>
-<html lang="es">
+<body>
+  <header class="w-[100%] flex md:flex-col items-center justify-around bg-[#f2f2f2] md:bg-[#fff]">
+    <h1 class="text-5xl md:text-7xl font-bold py-10 px-5 md:p-10 text-[#38B832]">All
+      Services API
+    </h1>
+    {{!-- Dropdawn menu mobile --}}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Services API</title>
-</head>
 
-<body class="bg:[f2f2f2]">
-  <h1 class="text-5xl text-center font-bold p-10 text-[#a6a2a2]">All Services API</h1>
+    <div class="md:hidden">
+      <div class="relative inline-block text-left w-[40px] p-0 bg-[#38B832] ">
+        <div>
+          <button type="button"
+            class="inline-flex justify-center w-full py-2 font-medium text-white bg-[#38B832] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+            id="options-menu" aria-expanded="false" aria-haspopup="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="16px"
+              height="16px" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 6l16 0" />
+              <path d="M4 12l16 0" />
+              <path d="M4 18l16 0" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Dropdown panel, oculto por defecto -->
+        <div
+          class="absolute right-0 mt-2 w-56 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+          role="menu" aria-orientation="vertical" aria-labelledby="options-menu" id="dropdown-menu">
+          <!-- Elementos del dropdown -->
+          <div class="py-1" role="none">
+            <a href="#quienesSomos" class="block px-4 py-2 text-sm text-gray-700 " role="menuitem">Nosotros</a>
+            <a href="#" target="_blank" class="block px-4 py-2 text-sm text-gray-700 " role="menuitem">Sitio
+              Web</a>
+            <a href="/api-docs" target="_blank" class="block px-4 py-2 text-sm text-gray-700 "
+              role="menuitem">Documentación</a>
+            <a href="https://github.com/No-Country/c16-126-n-react" target="_blank"
+              class="block px-4 py-2 text-sm text-gray-700 " role="menuitem">Github</a>
+            <a href="https://www.figma.com/file/Cf1oTmGWXlKIRCI7ESnn97/Proyecto-Servicios-Hogar?type=design&node-id=101-2&mode=design&t=Amgc1lh9F9Th2yy5-0"
+              target="_blank" class="block px-4 py-2 text-sm text-gray-700 " role="menuitem">Figma</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </header>
   <!-- Navbar -->
-  <nav class="bg-[#f2f2f2] p-3 flex flex-row items-center justify-around">
+  <nav class="bg-[#f2f2f2] p-3 items-center justify-around hidden md:flex flex-row">
     <div class="bg-[#38B832] rounded-3xl px-7 py-2  w-max-[10%] text-center">
       <a class="hover:text-black/100  text-white" href="#quienesSomos">Nosotros</a>
     </div>
@@ -67,133 +103,208 @@
         href="https://www.figma.com/file/Cf1oTmGWXlKIRCI7ESnn97/Proyecto-Servicios-Hogar?type=design&node-id=101-2&mode=design&t=Amgc1lh9F9Th2yy5-0">Figma</a>
     </div>
   </nav>
-  <section class="flex flex-row lg:flex-row items-center justify-around mt-7">
-    <div class="container w-1/2">
-      <h2 class="text-2xl font-bold mb-2 text-[#38B832]">Aplicación de servicios para el hogar</h2>
-      <p class="text-xl font-semibold text-gray-600 text-pretty">
-        API Rest para la aplicación de contratacion de servicios del hogar, desarrollada en equipo para la simulación de
+
+  {{!-- Main content --}}
+
+  <section class="flex md:flex-row flex-col items-center justify-center md:justify-around mt-7">
+    <div class="container md:w-1/2 px-5 md:w-[80ch]">
+      <h2 class="text-2xl font-bold mb-4 text-[#38B832]">Aplicación de servicios para el hogar</h2>
+      <p class="text-xl font-semibold text-gray-600 text-pretty ">
+        API Rest para la aplicación de contratacion de servicios del hogar, desarrollada en equipo para la simulación
+        de
         <strong class="text-[#a6a2a2]">No Country.</strong> Es una aplicación dedicada a satisfacer la necesidad que
         suelen tener los
         argentinos de pedir referencias de profesionales de todo tipo, antes de realizar un trabajo en el hogar, de la
         mejor manera posible.
       </p>
     </div>
-    <div class="m-5">
+    <div class="md:m-5">
       <img src="https://i.blogs.es/6f95f6/tools-864983_1280/650_1200.jpg"
-        alt="Imagen de tablero con herramientas de trabajo" class="size-60 rounded-full cover " />
+        alt="Imagen de tablero con herramientas de trabajo"
+        class="size-60 md:size-40 lg:size-60 rounded-full cover my-5 md:my-0" />
     </div>
   </section>
 
   <section id="quienesSomos">
     <h1 class="text-3xl font-bold text-center text-[#38B832] m-10">Quienes Somos</h1>
     {{!-- cards de los integrantes --}}
-    <section class="flex flex-col items-center my-8">
-      <p class="text-xl font-semibold text-gray-600 text-pretty w-[60ch]">Somos un equipo de trabajo formado
+    <section class="flex flex-col items-center my-8 px-5">
+      <p class="text-xl font-semibold text-gray-600 text-pretty md:w-[60ch]">Somos un equipo de trabajo formado
         a través de
         <strong class="text-[#a6a2a2] ">No
           Country</strong>,
         que se puso como objetivo desarrollar una <strong class="text-[#a6a2a2] ">aplicación
           de uso real</strong>, que pueda satisfacer de forma eficiente una necesidad. El equipo esta conformado por 3
-        <strong class="text-[#a6a2a2] ">desarrolladores Frontend</strong>, una <strong class="text-[#a6a2a2] ">QA manual
+        <strong class="text-[#a6a2a2] ">desarrolladores Frontend</strong>, una <strong class="text-[#a6a2a2] ">QA
+          manual
           y Diseñadora UX/UI</strong>, y un
         <strong class="text-[#a6a2a2] ">Desarrollador Backend</strong>. Todos ellos
         apasionados de la programación.
       </p>
     </section>
     <section class="grid grid-cols-1 lg:grid-cols-2 justify-around items-center">
-      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
-        <div class="flex flex-row items-center">
-          <img src="https://avatars.githubusercontent.com/u/106778830?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+      <article
+        class="flex flex-col md:flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[70%] md:w-min-[75%]">
+        <div class="flex flex-col md:flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/106778830?v=4" class="rounded-full w-[200px] shadow-xl m-2"
             alt="Avatar de Laura Marcela Rozo Rodriguez">
-          <div class="flex flex-col">
-            <p class="text-2xl font-semibold">Laura Marcela Rozo Rodriguez</p>
-            <p class="text-xl font-semibold text-gray-600">Rol: Tester QA - Diseño UI/UX </p>
-            <a href="" class="flex flex-row text-center items-center">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                viewBox="0 0 256 256">
-                <path
-                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
-                  fill="#0A66C2" />
-              </svg>
-              <span class="mx-2 font-sembold">LinkedIn</span>
-            </a>
+          <div class="flex flex-col m-3 md:m-5">
+            <p class="text-2xl font-semibold my-1">Laura Rodriguez</p>
+            <p class="text-xl font-semibold text-gray-600 my-1">Rol: Tester QA - Diseño UI/UX </p>
+            <div class="flex flex-row items-center">
+              <a href="https://www.linkedin.com/in/laura-rozorodriguez/" target="_blank"
+                class="flex flex-row items-center m-2">
+                <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                    fill="#0A66C2" />
+                </svg>
+                <span class="font-semibold mx-2">LinkedIn</span>
+              </a>
+              <a href="https://github.com/Laumarceline" class="flex flex-row items-center m-2" target="_blank"
+                class="hover:text-black/100">
+                <svg viewBox="0 0 256 250" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid">
+                  <path
+                    d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z"
+                    fill="#545454" />
+                </svg>
+                <span class="font-semibold mx-2">GitHub</span></a>
+            </div>
           </div>
         </div>
       </article>
-      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
-        <div class="flex flex-row items-center">
-          <img src="https://avatars.githubusercontent.com/u/109558787?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+      <article
+        class="flex flex-col md:flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[70%] md:w-min-[75%]">
+        <div class="flex flex-col md:flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/109558787?v=4" class="rounded-full w-[200px] shadow-xl m-2"
             alt="Avatar de Franco Martí­n Ojeda">
-          <div class="flex flex-col">
-            <p class="text-2xl font-semibold">Franco Martí­n Ojeda</p>
-            <p class="text-xl font-semibold text-gray-600">Rol: Desarrollador Backend</p>
-            <a href="https://www.linkedin.com/in/franco-ojeda-5470b399" class="flex flex-row text-center items-center">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                viewBox="0 0 256 256">
-                <path
-                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
-                  fill="#0A66C2" />
-              </svg>
-              <span class="mx-2 font-sembold">LinkedIn</span>
-            </a>
+          <div class="flex flex-col m-3 md:m-5">
+            <p class="text-2xl font-semibold my-1">Franco Ojeda</p>
+            <p class="text-xl font-semibold text-gray-600 my-1">Rol: Desarrollador Backend</p>
+            <div class="flex flex-row items-center">
+
+              <a href="https://www.linkedin.com/in/franco-ojeda-5470b399" target="_blank"
+                class="flex flex-row text-center items-center m-2">
+                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                    fill="#0A66C2" />
+                </svg>
+                <span class="mx-2 font-semibold">LinkedIn</span>
+              </a>
+              <a href="https://github.com/FrancoOjeda" target="_blank"
+                class="flex flex-row text-center items-center m-2">
+                <svg viewBox="0 0 256 250" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid">
+                  <path
+                    d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z"
+                    fill="#545454" />
+                </svg>
+                <span class="mx-2 font-semibold">GitHub</span></a>
+            </div>
           </div>
         </div>
       </article>
-      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
-        <div class="flex flex-row items-center">
-          <img src="https://avatars.githubusercontent.com/u/101590889?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+      <article
+        class="flex flex-col md:flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[70%] md:w-min-[75%]">
+        <div class="flex flex-col md:flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/101590889?v=4" class="rounded-full w-[200px] shadow-xl m-2"
             alt="Avatar de Sebastian Gallego">
-          <div class="flex flex-col">
-            <p class="text-2xl font-semibold">Sebastian Gallego</p>
-            <p class="text-xl font-semibold text-gray-600">Rol: Desarrollador Frontend</p>
-            <a href="https://www.linkedin.com/in/sebastiangallegocanon/" class="flex flex-row text-center items-center">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                viewBox="0 0 256 256">
-                <path
-                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
-                  fill="#0A66C2" />
-              </svg>
-              <span class="mx-2 font-sembold">LinkedIn</span>
-            </a>
+          <div class="flex flex-col m-3 md:m-5">
+            <p class="text-2xl font-semibold my-1">Sebastian Gallego</p>
+            <p class="text-xl font-semibold text-gray-600 my-1">Rol: Desarrollador Frontend</p>
+            <div class="flex flex-row items-center">
+
+              <a href="https://www.linkedin.com/in/sebastiangallegocanon/" target="_blank"
+                class="flex flex-row text-center items-center m-2">
+                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                    fill="#0A66C2" />
+                </svg>
+                <span class="mx-2 font-semibold">LinkedIn</span>
+              </a>
+              <a href="https://github.com/SebastianGallego" target="_blank"
+                class="flex flex-row text-center items-center m-2">
+                <svg viewBox="0 0 256 250" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid">
+                  <path
+                    d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z"
+                    fill="#545454" />
+                </svg>
+                <span class="mx-2 font-semibold">GitHub</span></a>
+              </a>
+            </div>
           </div>
         </div>
       </article>
-      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
-        <div class="flex flex-row items-center">
-          <img src="https://avatars.githubusercontent.com/u/54607894?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+      <article
+        class="flex flex-col md:flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[70%] md:w-min-[75%]">
+        <div class="flex flex-col md:flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/54607894?v=4" class="rounded-full w-[200px] shadow-xl m-2"
             alt="Avatar de Eduardo Hidalgo">
-          <div class="flex flex-col">
-            <p class="text-2xl font-semibold">Eduardo Hidalgo</p>
-            <p class="text-xl font-semibold text-gray-600">Rol: Desarrollador Frontend</p>
-            <a href="https://www.linkedin.com/in/eduardo-antonio-hidalgo/"
-              class="flex flex-row text-center items-center">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                viewBox="0 0 256 256">
-                <path
-                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
-                  fill="#0A66C2" />
-              </svg>
-              <span class="mx-2 font-sembold">LinkedIn</span>
-            </a>
+          <div class="flex flex-col m-3 md:m-5">
+            <p class="text-2xl font-semibold my-1">Eduardo Hidalgo</p>
+            <p class="text-xl font-semibold text-gray-600 my-1">Rol: Desarrollador Frontend</p>
+            <div class="flex flex-row items-center">
+              <a href="https://www.linkedin.com/in/eduardo-antonio-hidalgo/" target="_blank"
+                class="flex flex-row text-center items-center m-2">
+                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                    fill="#0A66C2" />
+                </svg>
+                <span class="mx-2 font-semibold">LinkedIn</span>
+              </a>
+              <a href="https://github.com/EduardoHidalgo10" target="_blank"
+                class="flex flex-row text-center items-center m-2">
+                <svg viewBox="0 0 256 250" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid">
+                  <path
+                    d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z"
+                    fill="#545454" />
+                </svg>
+                <span class="mx-2 font-semibold">GitHub</span></a>
+              </a>
+            </div>
           </div>
         </div>
       </article>
-      <article class="flex flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[60%]">
-        <div class="flex flex-row items-center">
-          <img src="https://avatars.githubusercontent.com/u/128101914?v=4" class="rounded-full w-[200px] mx-2 shadow-xl"
+      <article
+        class="flex flex-col md:flex-row items-center my-5 mx-auto border shadow hover:shadow-lg p-2 w-[70%] md:w-min-[75%]">
+        <div class="flex flex-col md:flex-row items-center">
+          <img src="https://avatars.githubusercontent.com/u/128101914?v=4" class="rounded-full w-[200px] shadow-xl m-2"
             alt="Avatar de Gabriel Taboada">
-          <div class="flex flex-col">
-            <p class="text-2xl font-semibold">Gabriel Taboada</p>
-            <p class="text-xl font-semibold text-gray-600">Rol: Desarrollador Frontend</p>
-            <a href="#" class="flex flex-row text-center items-center">
-              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                viewBox="0 0 256 256">
-                <path
-                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
-                  fill="#0A66C2" />
-              </svg>
-              <span class="mx-2 font-sembold">LinkedIn</span>
-            </a>
+          <div class="flex flex-col m-3 md:m-5">
+            <p class="text-2xl font-semibold my-1">Gabriel Taboada</p>
+            <p class="text-xl font-semibold text-gray-600 my-1">Rol: Desarrollador Frontend</p>
+            <div class="flex flex-row items-center">
+              <a href="#" class="flex flex-row text-center items-center m-2">
+                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                    fill="#0A66C2" />
+                </svg>
+                <span class="mx-2 font-semibold">LinkedIn</span>
+              </a>
+              </a>
+              <a href="https://github.com/Gabriel-Taboada-C" target="_blank"
+                class="flex flex-row text-center items-center m-2">
+                <svg viewBox="0 0 256 250" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid">
+                  <path
+                    d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z"
+                    fill="#545454" />
+                </svg>
+                <span class="mx-2 font-semibold">GitHub</span></a>
+              </a>
+            </div>
           </div>
         </div>
       </article>
@@ -201,5 +312,23 @@
   </section>
 
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuButton = document.getElementById('options-menu');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    menuButton.addEventListener('click', function () {
+      const isOpen = dropdownMenu.classList.contains('hidden');
+      if (isOpen) {
+        dropdownMenu.classList.remove('hidden');
+        menuButton.setAttribute('aria-expanded', 'true');
+      } else {
+        dropdownMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+</script>
 
 </html>
