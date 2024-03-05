@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 const { cerrarSesionCliente } = require('../controllers/cerrarSesion')
-const { postRegistroUsuario } = require('../controllers/controladorUsuarios')
+const { postRegistroUsuario, updateUsuario } = require('../controllers/controladorUsuarios')
 const { getListaProfesionales } = require('../controllers/controladoreSolicitarProfesionales')
 const { postInicioCliente, postInicioProfesional } = require('../controllers/controladorInicio')
 const { autorizarUsuario } = require('../autorizacion/autorizarUsuario')
@@ -68,6 +68,75 @@ router
   */
 
   .post('/registroUsuarios', postRegistroUsuario)
+  /**
+ * @swagger
+ * /api/actualizarUsuario:
+ *   post:
+ *     tags: [Usuarios]
+ *     summary: Actualizar información de usuario.
+ *     description: Permite al usuario actualizar su información en el sistema.
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               ciudad:
+ *                 type: string
+ *                 description: Nueva ciudad de residencia del usuario.
+ *               provincia:
+ *                 type: string
+ *                 description: Nueva provincia de residencia del usuario.
+ *               codigo_postal:
+ *                 type: number
+ *                 description: Nuevo código postal de la ciudad de residencia del usuario.
+ *     responses:
+ *       '200':
+ *         description: Información de usuario actualizada correctamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   description: Mensaje de éxito.
+ *       '401':
+ *         description: Error de autenticación o no autorizado.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error detallado.
+ *       '404':
+ *         description: No se encontró un usuario para actualizar.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error detallado.
+ *       '500':
+ *         description: Error interno del servidor.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error detallado.
+ */
+
+  .post('/actualizarUsuario', autorizarUsuario, updateUsuario)
   /**
   * @swagger
   * /api/inicioCliente:

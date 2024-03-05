@@ -1,4 +1,5 @@
 const { createUserWithEmailAndPassword: crearUsuarioEnFirebase } = require('firebase/auth')
+const { obtenerUsuarioId } = require('./controladorDatosCliente')
 const { auth } = require('../firebase')
 const { pool } = require('../base/tablas/DB')
 
@@ -49,6 +50,31 @@ async function postRegistroUsuario(req, res) {
   }
 }
 
+
+const updateUsuario = async (req, res) => {
+  const { ciudad, provincia, codigo_postal } = req.body
+  try {
+    const user = req.user
+    const email = user.reloadUserInfo.email;
+    const usuarioId = await obtenerUsuarioId(email)
+    const actualizarUsuario = await pool.query({
+      sql: 'UPDATE usuarios SET codigo_postal = ?, ciudad = ?, provincia = ? WHERE usuario_id = ?',
+      values: [codigo_postal, ciudad, provincia, usuarioId.usuario_id]
+    })
+    if (actualizarUsuario[0].affectedRows > 0) {
+      return res.status(200).json({ mensaje: "Información de usuario actualizada correctamente" })
+    } else {
+      return res.status(404).json({ error: "No se encontró un usuario para actualizar con el email proporcionado" })
+    }
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({
+      error: 'Error interno del servidor'
+    })
+  }
+}
+
 module.exports = {
-  postRegistroUsuario
+  postRegistroUsuario,
+  updateUsuario
 }

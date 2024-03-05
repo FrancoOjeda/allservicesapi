@@ -45,7 +45,7 @@ const postDatosCliente = async (req, res) => {
         sql: 'UPDATE clientes SET direccion = ? WHERE usuario_id = ?',
         values: [direccion, usuario.usuario_id]
       });
-      if (actualizarDireccion.affectedRows === 0) {
+      if (actualizarDireccion[0].affectedRows === 0) {
         res.status(500).json({ error: 'Error al actualizar la dirección' });
       } else {
         res.status(201).json({ mensaje: 'Dirección actualizada correctamente' });
@@ -55,7 +55,7 @@ const postDatosCliente = async (req, res) => {
         sql: 'INSERT INTO clientes (usuario_id, direccion) VALUES (?, ?)',
         values: [usuario.usuario_id, direccion]
       });
-      if (nuevaDireccion.affectedRows === 0) {
+      if (nuevaDireccion[0].affectedRows === 0) {
         res.status(500).json({ error: 'Error al registrar la nueva dirección' });
       } else {
         res.status(201).json({ mensaje: 'Dirección registrada correctamente' });
@@ -69,5 +69,6 @@ const postDatosCliente = async (req, res) => {
 
 module.exports = {
   getDatosCliente,
-  postDatosCliente
+  postDatosCliente,
+  obtenerUsuarioId
 }
