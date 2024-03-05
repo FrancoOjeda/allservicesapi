@@ -1,6 +1,6 @@
 <body>
-  <header class="w-[100%] flex md:flex-col items-center justify-around bg-[#f2f2f2] md:bg-[#fff]">
-    <h1 class="text-5xl md:text-7xl font-bold py-10 px-5 md:p-10 text-[#38B832]">All
+  <header class="w-[100%] flex md:flex-col items-center justify-around bg-[#f2f2f2] md:bg-white">
+    <h1 class="text-5xl md:text-7xl font-bold py-10 px-5 md:p-20 text-[#38B832]">All
       Services API
     </h1>
     {{!-- Dropdawn menu mobile --}}
@@ -30,7 +30,8 @@
           <!-- Elementos del dropdown -->
           <div class="py-1" role="none">
             <a href="#quienesSomos" class="block px-4 py-2 text-sm text-gray-700 " role="menuitem">Nosotros</a>
-            <a href="#" target="_blank" class="block px-4 py-2 text-sm text-gray-700 " role="menuitem">Sitio
+            <a href="https://65e674952914492e35118ffd--courageous-manatee-8d28de.netlify.app/" target="_blank"
+              class="block px-4 py-2 text-sm text-gray-700 " role="menuitem">Sitio
               Web</a>
             <a href="/api-docs" target="_blank" class="block px-4 py-2 text-sm text-gray-700 "
               role="menuitem">Documentación</a>
@@ -46,7 +47,7 @@
 
   </header>
   <!-- Navbar -->
-  <nav class="bg-[#f2f2f2] p-3 items-center justify-around hidden md:flex flex-row">
+  <nav class="bg-[#f2f2f2] p-3 items-center justify-around hidden md:flex flex-row my-10">
     <div class="bg-[#38B832] rounded-3xl px-7 py-2  w-max-[10%] text-center">
       <a class="hover:text-black/100  text-white" href="#quienesSomos">Nosotros</a>
     </div>
@@ -59,10 +60,11 @@
         <path d="M6 8h.01" />
         <path d="M9 8h.01" />
       </svg>
-      <a class="hover:text-black/100 pl-2 text-white " href="#">Sitio web</a>
+      <a class="hover:text-black/100 pl-2 text-white "
+        href="https://65e674952914492e35118ffd--courageous-manatee-8d28de.netlify.app/" target="_blank">Sitio web</a>
     </div>
     <div class="bg-[#38B832] rounded-3xl px-7 py-2 w-max-[10%] text-center">
-      <a class="hover:text-black/100 text-white " href="/api-docs">Documentación</a>
+      <a class="hover:text-black/100 text-white" target="_blank" href="/api-docs">Documentación</a>
     </div>
     <div class="bg-[#38B832] rounded-3xl px-7 py-2 flex flex-row items-center w-max-[10%] text-center">
       <svg viewBox="0 0 256 250" width="16" height="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -106,9 +108,9 @@
 
   {{!-- Main content --}}
 
-  <section class="flex md:flex-row flex-col items-center justify-center md:justify-around mt-7">
+  <section class="flex md:flex-row flex-col items-center justify-center md:justify-around md:my-20">
     <div class="container px-5 md:w-[80ch]">
-      <h2 class="text-2xl font-bold mb-4 text-[#38B832]">Aplicación de servicios para el hogar</h2>
+      <h2 class="text-2xl md:text-4xl font-bold mb-4 text-[#38B832]">Aplicación de servicios para el hogar</h2>
       <p class="text-xl font-semibold text-gray-600 text-pretty my-10">
         API Rest para la aplicación de contratacion de servicios del hogar, desarrollada en equipo para la simulación
         de
@@ -126,20 +128,20 @@
   </section>
 
   <section id="quienesSomos">
-    <h1 class="text-3xl font-bold text-center text-[#38B832] m-10">Quienes Somos</h1>
+    <h1 class="text-3xl md:text-5xl font-bold text-center text-[#38B832] m-10">Quienes Somos</h1>
     {{!-- cards de los integrantes --}}
     <article class="flex flex-col items-center px-5 my-20 mx-10">
       <p class="text-xl font-semibold text-gray-600 text-pretty md:w-[60ch]">Somos un equipo de trabajo formado
         a través de
         <strong class="text-[#a6a2a2] ">No
           Country</strong>,
-        que se puso como objetivo desarrollar una <strong class="text-[#a6a2a2] ">aplicación
-          de uso real</strong>, que pueda satisfacer de forma eficiente una necesidad. El equipo esta conformado por 3
+        que tiene como objetivo desarrollar una <strong class="text-[#a6a2a2] ">aplicación
+          de uso real</strong>, que pueda satisfacer de forma eficiente una necesidad. Somos un equipo apasionado por la
+        programacion, está conformado por 3
         <strong class="text-[#a6a2a2] ">desarrolladores Frontend</strong>, una <strong class="text-[#a6a2a2] ">QA
           manual
           y Diseñadora UX/UI</strong>, y un
-        <strong class="text-[#a6a2a2] ">Desarrollador Backend</strong>. Todos ellos
-        apasionados de la programación.
+        <strong class="text-[#a6a2a2] ">Desarrollador Backend</strong>.
       </p>
     </article>
     <section class="grid grid-cols-1 xl:grid-cols-2 justify-around items-center">
@@ -293,7 +295,8 @@
             <p class="text-2xl font-semibold my-1">Gabriel Taboada</p>
             <p class="text-xl font-semibold text-gray-600 my-1">Rol: Desarrollador Frontend</p>
             <div class="flex flex-row items-center">
-              <a href="#" class="flex flex-row text-center items-center m-2">
+              <a href="https://www.linkedin.com/in/gabriel-alberto-taboada-cardullo-21736b1b9/" target="_blank"
+                class="flex flex-row text-center items-center m-2">
                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
                   viewBox="0 0 256 256">
                   <path

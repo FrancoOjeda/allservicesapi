@@ -1,10 +1,10 @@
 const swaggerJSDoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express');
 const express = require('express')
 const cors = require('cors')
 const hbs = require('express-handlebars')
 const path = require('path')
 require('dotenv').config()
-const swaggerUi = require('swagger-ui-express');
 // const { autorizarUsuario } = require('./src/autorizacion/autorizarUsuario.js')
 
 // const { createClient } = require("@libsql/client")
