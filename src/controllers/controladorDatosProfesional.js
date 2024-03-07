@@ -138,20 +138,17 @@ const postProfesionUsuario = async (req, res) => {
     const profesionRegistrada = await verificarOficiosRegistrados(profesion_id, profesionalId.profesional_id )
     if(profesionRegistrada) {
       return res.status(400).json({error: "Ya tienes registrada esta profesion"})
+    } else {
+      const nuevaProfesion = await pool.query({
+        sql: 'INSERT INTO profesional_profesiones (profesional_id, profesion_id, fecha_alta) VALUES (?, ?, ?)',
+        values: [profesionalId.profesional_id, profesion_id, fecha_alta],
+      })
+      res.status(201).json({ mensaje: 'Profesión agregada correctamente' });
     }
-    const nuevaProfesion = await pool.query({
-      sql: 'INSERT INTO profesional_profesiones (profesional_id, profesion_id, fecha_alta) VALUES (?, ?, ?)',
-      values: [profesionalId.profesional_id, profesion_id, fecha_alta],
-    })
-    res.status(201).json({ mensaje: 'Profesión agregada correctamente' });
   } catch (error) {
     console.error('Error al agregar profesión:', error);
     res.status(500).json({ error: 'Error al agregar profesión' });
   }
-}
-
-const postSobreMi = async (req, res) => {
-
 }
 
 
