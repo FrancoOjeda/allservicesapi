@@ -16,6 +16,14 @@ const verificarProfesion = async (profesionId) => {
 
   return result[0].count > 0;
 };
+
+const verificarOficiosRegistrados = async (profesion, profesional) => {
+  const [resultado] = await pool.query({
+    sql: 'SELECT * FROM profesional_profesiones WHERE profesion_id = ? AND profesional_id =?',
+    values: [profesion, profesional]
+    )}
+return resultado
+}
 const obtenerOficiosDelProfesional = async (profesionalId) => {
   try {
     const query = `
@@ -110,7 +118,9 @@ const postProfesionUsuario = async (req, res) => {
   const mes = fechaActual.getMonth() + 1; // Sumar 1 al mes para obtener el mes correcto
   const año = fechaActual.getFullYear()
   const fecha_alta = `${año}-${mes}-${dia}`; // Orden correcto de año-mes-día
+  
   try {
+    
     const user = req.user
     const email = user.reloadUserInfo.email
     const [usuarioId] = await obtenerUsuarioId(email)
@@ -118,6 +128,10 @@ const postProfesionUsuario = async (req, res) => {
     const existeProfesion = await verificarProfesion(profesion_id)
     if (!existeProfesion) {
       return res.status(404).json({ error: 'Profesion no encontrada' });
+    }
+    const profesionRegistrada = await verificarOficiosRegistrados(profesion_id, profesionalId.profesional_id )
+    if(profesionRegistrada) {
+      return rea.status(400).json({error: "Ya tienes registrada esta profesion"})
     }
     const nuevaProfesion = await pool.query({
       sql: 'INSERT INTO profesional_profesiones (profesional_id, profesion_id, fecha_alta) VALUES (?, ?, ?)',
