@@ -1,3 +1,4 @@
+
 const { pool } = require('../base/tablas/DB');
 
 const verificarRegistro = async (email) => {
@@ -18,12 +19,18 @@ const verificarProfesion = async (profesionId) => {
 };
 
 const verificarOficiosRegistrados = async (profesion, profesional) => {
-  const [resultado] = await pool.query({
-    sql: 'SELECT * FROM profesional_profesiones WHERE profesion_id = ? AND profesional_id =?',
-    values: [profesion, profesional]
-    )}
-return resultado
+  try {
+    const [resultado] = await pool.query({
+      sql: 'SELECT * FROM profesional_profesiones WHERE profesion_id = ? AND profesional_id = ?',
+      values: [profesion, profesional]
+    });
+    return resultado;
+  } catch (error) {
+    console.error('Error al verificar oficios registrados:', error);
+    return null; // O puedes manejar el error de otra manera, según tu lógica de la aplicación
+  }
 }
+
 const obtenerOficiosDelProfesional = async (profesionalId) => {
   try {
     const query = `
@@ -120,7 +127,6 @@ const postProfesionUsuario = async (req, res) => {
   const fecha_alta = `${año}-${mes}-${dia}`; // Orden correcto de año-mes-día
   
   try {
-    
     const user = req.user
     const email = user.reloadUserInfo.email
     const [usuarioId] = await obtenerUsuarioId(email)
@@ -131,7 +137,7 @@ const postProfesionUsuario = async (req, res) => {
     }
     const profesionRegistrada = await verificarOficiosRegistrados(profesion_id, profesionalId.profesional_id )
     if(profesionRegistrada) {
-      return rea.status(400).json({error: "Ya tienes registrada esta profesion"})
+      return res.status(400).json({error: "Ya tienes registrada esta profesion"})
     }
     const nuevaProfesion = await pool.query({
       sql: 'INSERT INTO profesional_profesiones (profesional_id, profesion_id, fecha_alta) VALUES (?, ?, ?)',
