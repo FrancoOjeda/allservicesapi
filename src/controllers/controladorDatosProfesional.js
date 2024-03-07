@@ -136,7 +136,7 @@ const postProfesionUsuario = async (req, res) => {
       return res.status(404).json({ error: 'Profesion no encontrada' });
     }
     const profesionRegistrada = await verificarOficiosRegistrados(profesion_id, profesionalId.profesional_id )
-    if(profesionRegistrada) {
+    if( profesionRegistrada.length > 0 ) {
       return res.status(400).json({error: "Ya tienes registrada esta profesion"})
     } else {
       const nuevaProfesion = await pool.query({
