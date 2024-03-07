@@ -8,7 +8,7 @@ const { getListaProfesionales } = require('../controllers/controladoreSolicitarP
 const { postInicioCliente, postInicioProfesional } = require('../controllers/controladorInicio')
 const { autorizarUsuario } = require('../autorizacion/autorizarUsuario')
 const { perfil } = require('../controllers/controladorDatosPerfil')
-const { getDatosCliente, postDatosCliente } = require('../controllers/controladorDatosCliente')
+const { getDatosCliente, postDireccionCliente, postSobreMi } = require('../controllers/controladorDatosCliente')
 const { getDatosProfesional, postHorarioProfesional, postProfesionUsuario } = require('../controllers/controladorDatosProfesional')
 const { cargarProfesiones } = require('../controllers/controladorCargarProfesiones')
 const { getProfesiones } = require('../controllers/controladorProfesiones')
@@ -332,7 +332,48 @@ router
 *                   description: Mensaje de error detallado
 */
 
-  .post('/datosCliente', autorizarUsuario, postDatosCliente)
+  .post('/datosCliente', autorizarUsuario, postDireccionCliente)
+  /**
+* @swagger
+* /api/sobreMi:
+*   post:
+*     tags: [Usuarios]
+*     summary: Actualizar o registrar descripción del cliente
+*     description: Permite actualizar o registrar la descripción del cliente autenticado. La longitud máxima de la descripción es de 240 caracteres.
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             type: object
+*             properties:
+*               descripcion:
+*                 type: string
+*                 description: Descripción del cliente.
+*     responses:
+*       '201':
+*         description: Descripción del cliente actualizada o registrada correctamente
+*         content:
+*           application/json:
+*             schema:
+*               type: object
+*               properties:
+*                 mensaje:
+*                   type: string
+*                   description: Mensaje de éxito
+*       '500':
+*         description: Error al actualizar o registrar la descripción del cliente
+*         content:
+*           application/json:
+*             schema:
+*               type: object
+*               properties:
+*                 error:
+*                   type: string
+*                   description: Mensaje de error detallado
+*/
+
+  .post('/sobreMi', autorizarUsuario, postSobreMi)
   /**
 * @swagger
 * /api/cerrarSesion:
@@ -348,7 +389,6 @@ router
 */
 
   .get('/cerrarSesion', cerrarSesionCliente)
-
   /**
   * @swagger
   * /api/solicitarProfesionales:

@@ -130,11 +130,15 @@ const postProfesionUsuario = async (req, res) => {
   }
 }
 
+const postSobreMi = async (req, res) => {
+
+}
+
 
 module.exports = {
   getDatosProfesional,
   postHorarioProfesional,
   postProfesionUsuario,
   obtenerOficiosDelProfesional,
-  verificarRegistro
+  verificarRegistro,
 }
